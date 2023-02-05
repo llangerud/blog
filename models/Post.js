@@ -13,6 +13,12 @@ Post.init(
       primaryKey: true,
       allowNull: false
     },
+    title:
+    {
+      type: DataTypes.STRING,
+      allowNull: false
+
+    },
     content:
     {
       type: DataTypes.STRING,

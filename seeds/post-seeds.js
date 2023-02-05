@@ -3,23 +3,28 @@ const { Post } = require('../models');
 const postData = [
   {
     content: 'Computers are bad',
-    creator_id: 1,
+    title: 'post one',
+    user_id: 1,
   },
   {
     content: 'Computers are good',
-    creator_id: 2,
+    title: 'post two',
+    user_id: 2,
   },
   {
     content: 'Help AI is replacing me',
-    creator_id: 3,
+    title: 'post three',
+    user_id: 3,
   },
   {
     content: 'I am fine now. I am definitely not a robot',
-    creator_id: 3,
+    title: 'post four',
+    user_id: 3,
   },
   {
     content: 'Can someone help me with this CAPTCHA please',
-    creator_id: 3,
+    title: 'post five',
+    user_id: 3,
   },
 ];
 
