@@ -33,12 +33,22 @@ router.post('/login', async (req, res) => {
 
   router.post('/create',  async (req, res) => {
     try {
-      console.log(req);
-      const newUser = await User.create ({user_name: req.body.username, user_email: req.body.email, password: req.body.password});
+      console.log(req.body.email);
+      const newUser = await User.create ({user_name: req.body.username, email: req.body.email, password: req.body.password});
       res.json ({user: newUser.user_name, message: 'created'});
     }
   catch (err) {
     res.status(400).json(err);
+  }
+});
+
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
   }
 });
 

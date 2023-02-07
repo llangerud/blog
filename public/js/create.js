@@ -1,6 +1,7 @@
 // sends a fetch request to the api/userRoutes and creates user 
-async function getUserInfo() {
+async function getUserInfo(event) {
     
+    event.preventDefault();
     
     const email = document.querySelector('#email-create').value.trim();
 
@@ -8,10 +9,7 @@ async function getUserInfo() {
 
     const password = document.querySelector('#password-create').value.trim();
 
-    
-    
     if (email && password && username) {
-        console.log(JSON.stringify({email, username, password}));
         const response = await fetch('/api/users/create', {
           method: 'POST',
           body: JSON.stringify({email, username, password}),
@@ -19,12 +17,12 @@ async function getUserInfo() {
         });
     
         if (response.ok) {
-          alert('account created! Please login to continue')  
-          document.location.replace('/users/login');
+          alert('account created!')  
+          document.location.replace('/dashboard');
         } else {
           alert('account creation failed, please try again');
         }
       }
     };
     
-    document.querySelector('#create').addEventListener('submit', getUserInfo);
+    document.querySelector('#create-form').addEventListener('submit', getUserInfo);

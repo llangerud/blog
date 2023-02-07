@@ -20,4 +20,20 @@ signupLink.addEventListener('click', function goSignup () {
     document.location.replace('/create');
 });
 
+const logoutLink = document.querySelector('#logout');
+logoutLink.addEventListener('click', async function goLogout () {
+    const response = await fetch('/api/users/logout', {
+        method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+      });
+  
+      if (response.ok) {
+        alert('logged out')  
+        document.location.replace('/login');
+      } else {
+        alert('did not log out');
+      }
+});
+
+
 
