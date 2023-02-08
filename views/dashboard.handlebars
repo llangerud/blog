@@ -1,6 +1,11 @@
-<h1>this means dashboard view is loading correctly</h1>
+  {{#each posts as |post|}}
+  <div>
+            <h2>{{post.title}}</h2>
+            <section>
+                {{post.createdAt}}
+            </section>
+        </div>
+     {{/each}}
 
 
 
-
-<script src="/js/create.js"></script>

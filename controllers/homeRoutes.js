@@ -9,6 +9,7 @@ router.get('/', async (req, res) => {
         res.json(err);
     });
      const posts = allPosts.map((post) => post.get({plain: true}));
+     console.log(posts);
 
       res.render('homepage', {posts});
       
@@ -25,6 +26,10 @@ router.get('/', async (req, res) => {
 
 router.get('/create', (req, res)=> {
 res.render('create');
+});
+
+router.get('/viewpost', (req, res)=> {
+res.render('viewpost')
 });
 
 
