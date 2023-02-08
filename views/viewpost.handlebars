@@ -1,0 +1,41 @@
+<div class="card" >
+  <header class="card-header ">
+    <p class="card-header-title">
+      <a class="card-link"id={{post.id}}>{{post.title}}</a>
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+        {{post.content}}
+    </div>
+   </div>
+     <footer class="card-footer">
+    <p class="card-footer-item">
+      <span>
+        {{post.user_id}} <a></a>
+      </span>
+    </p>
+    <p class="card-footer-item">
+      <span>
+        {{post.createdAt}} <a></a>
+      </span>
+    </p>
+  </footer>
+</div> 
+
+<div class="field">
+  <label class="label">Leave a Comment</label>
+  <div class="control">
+    <input class="input" type="text" placeholder="Text input">
+  </div>
+</div>
+
+<div class="field is-grouped">
+  <div class="control">
+    <button class="button is-link" id="comment-btn">Submit</button>
+  </div>
+  {{!-- <div class="control">
+    <button class="button is-link is-light">Cancel</button>
+  </div>
+</div> --}}
+<script src="/js/viewPost.js"></script>
