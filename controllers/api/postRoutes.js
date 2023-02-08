@@ -1,12 +1,23 @@
 const router = require('express').Router();
 const { Post } = require('../../models');
+const { Comment } = require('../../models');
 
 router.get('/:id', async (req, res) => {
-const postData = await Post.findOne({ where: { id: req.params.id } });
-console.log(postData);
 
-const post = postData.get({plain: true});
+let postWithComments = await Post.findOne({
+    where: { id: req.params.id },
+    include: [{
+        model: Comment,
+        required: false,
+        where: {
+            post_id: req.params.id
+        }
+    }] 
+     });
+
+const post = postWithComments.get({plain: true});
 console.log(post);
+
 res.render('viewpost', {post})
 
 });

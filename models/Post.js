@@ -31,7 +31,7 @@ Post.init(
         model: User,
         key: 'id'
       }
-    }
+    },
 
   },
   {

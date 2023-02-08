@@ -22,6 +22,16 @@
     </p>
   </footer>
 </div> 
+{{#each post.comments}}
+<div class="card" >
+  <header class="card-header ">
+    <p class="card-header-title">
+    {{!-- {{..}}  {{lookup ../comments @index}} --}}
+    {{this.content}}
+    </p>
+  </header>
+</div>
+{{/each}}
 
 <div class="field">
   <label class="label">Leave a Comment</label>
