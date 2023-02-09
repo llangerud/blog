@@ -17,7 +17,14 @@ router.get('/', async (req, res) => {
 
 
 router.get('/dashboard', auth, async (req, res) => {
-    res.render('dashboard');
+    const userPosts = await Post.findAll({
+        where: {user_id:req.session.user_id}
+    });
+    console.log(userPosts);
+    const posts = userPosts.map((post) => post.get({plain: true}));
+    console.log(posts);
+
+    res.render('dashboard', {posts});
 });
 
 router.get('/login', async (req, res) => {
@@ -26,6 +33,10 @@ router.get('/login', async (req, res) => {
 
 router.get('/create', (req, res) => {
     res.render('create');
+});
+
+router.get('/newPost', (req,res) => {
+    res.render('newpost');
 });
 
 

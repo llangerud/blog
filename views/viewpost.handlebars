@@ -26,8 +26,10 @@
 <div class="card" >
   <header class="card-header ">
     <p class="card-header-title">
-    {{!-- {{..}}  {{lookup ../comments @index}} --}}
+ 
     {{this.content}}
+    {{this.user_comment_id}}
+    {{this.createdAt}}
     </p>
   </header>
 </div>
@@ -44,8 +46,5 @@
   <div class="control">
     <button class="button is-link" id="comment-btn">Submit</button>
   </div>
-  {{!-- <div class="control">
-    <button class="button is-link is-light">Cancel</button>
-  </div>
-</div> --}}
+
 <script src="/js/viewPost.js"></script>
