@@ -30,7 +30,13 @@
         Dashboard
       </a>
     </div>
+    {{#if session.logged_in}}
     <div class="navbar-end">
+          <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary" id="logout">
+            <strong>Log Out</strong>
+        {{else}}
          <div class="navbar-item">
         <div class="buttons">
           <a class="button is-primary" id="signup">
@@ -41,10 +47,7 @@
           </a>
         </div>
       </div>
-            <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary" id="logout">
-            <strong>Log Out</strong>
+           {{/if}}
           </a>
         </div>
       </div>

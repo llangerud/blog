@@ -39,5 +39,10 @@ router.get('/newPost', (req,res) => {
     res.render('newpost');
 });
 
+router.get('/editPost/:id', (req,res) => {
+const post = req.params.id;
+res.render('editordeletepost', {post});
+});
+
 
 module.exports = router;

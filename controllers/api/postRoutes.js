@@ -35,6 +35,42 @@ router.post('/newPost', async (req, res) => {
     
     });
 
+     //displays the post the user clicked so they can edit it
+        router.get('/edit/:id', async (req, res) => {
+
+            let postEdit = await Post.findOne({
+                where: { id: req.params.id },
+                 });
+            
+            const post = postEdit.get({plain: true});
+            
+            res.render('editordeletepost', {post})
+            
+            });
+
+    //updates the selected post
+    router.put('/edit/update/:id', (req, res) => {
+
+        Post.update({title: req.body.title, content: req.body.content},{
+            where: { id: req.params.id },
+            
+             });
+        
+        });
+        //deletes the selected post
+        router.delete('/edit/delete/:id', (req, res) => {
+
+             Post.destroy({
+                where: { id: req.params.id },
+                
+                 });
+                        
+            });
+
+
+
+
+   
 
 
 module.exports = router;
