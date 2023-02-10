@@ -1,3 +1,9 @@
+
+
+const commentBtn = document.querySelector('#comment-btn')
+if (commentBtn) {
+commentBtn.addEventListener('click', getComment);
+
 async function getComment(event) {
     
     event.preventDefault();
@@ -15,12 +21,14 @@ async function getComment(event) {
         });
     
         if (response.ok) {
-          alert('comment added!')  
           document.location.replace(`/`);
         } else {
           alert('account creation failed, please try again');
         }
       }
     };
-    
-    document.querySelector('#comment-btn').addEventListener('click', getComment);
+  }
+  else {
+    return;
+  }
+   

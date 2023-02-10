@@ -14,8 +14,8 @@ router.post('/new', auth, async(req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
-
+router.get('/', auth, async (req, res) => {
+try {
   let myComments = await Comment.findAll({
       where: { user_comment_id: req.session.user_id },
       
@@ -23,13 +23,29 @@ router.get('/', async (req, res) => {
            console.log(myComments);
 
 
-  const comments = myComments.get({plain: true});
+  const comments = myComments.map((comment) => comment.get({plain: true}));
 
        console.log(comments);
        
        res.render('viewmycomments', {comments})
-       
+       }
+       catch (error) {
+        console.log(error);
+       }
        });
+
+
+router.get('/edit/:id', auth, async(req,res)=> {
+  let comments = await Comment.findOne({
+    where: { id: req.params.id },
+     });
+console.log(comments);
+const comment = comments.get({plain: true});
+
+res.render('editordeletecomment', {comment})
+
+
+});
 
 
 
