@@ -1,0 +1,23 @@
+ 
+  {{#each comments as |comment|}}
+        
+    
+<div class="card" >
+  <header class="card-header ">
+    <p class="card-header-title">
+      <a class="card-link"id = {{comment.id}}>{{comment.title}}</a>
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+        {{comment.createdAt}}
+    </div>
+   </div>
+</div> 
+
+{{/each}}
+
+
+
+
+<script src="/js/viewMyComments.js"></script>

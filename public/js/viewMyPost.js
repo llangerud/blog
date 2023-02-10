@@ -1,11 +1,15 @@
 
 
 const postLink = document.querySelectorAll('.card-link');
-const newPostBtn = document.querySelector('button');
-
+const newPostBtn = document.querySelector('#post-btn');
+const viewCommentBtn = document.querySelector('#comment-btn');
 
 newPostBtn.addEventListener('click', function goPostPage () {
     document.location.replace('/newPost');
+});
+
+ viewCommentBtn.addEventListener('click', function goMyCommentsPage () {
+    document.location.replace('/api/comments/');
 });
 
 
