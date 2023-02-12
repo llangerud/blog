@@ -1,26 +1,52 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const sequelize = require('../../config/connection');
+const { Post, User } = require('../../models');
 const { Comment } = require('../../models');
 
+
 router.get('/:id', async (req, res) => {
+    
+    let getUsername = await Post.findOne({
+    where: { id: req.params.id }
+    });
 
-let postWithComments = await Post.findOne({
-    where: { id: req.params.id },
-    include: [{
-        model: Comment,
-        required: false,
-        where: {
-            post_id: req.params.id
-        }
-    }] 
-     });
+    const userid = getUsername.user_id;
+    console.log(userid);
 
-const post = postWithComments.get({plain: true});
-console.log(post);
+    let postWithComments = await Post.findOne({
+        where: { id: req.params.id },
+        include: [
+            {
+                model: User,
+                attributes: ['user_name']
+              },
+            {
+            model: Comment,
+            required: false,
+            // where: {
+            //     post_id: req.params.id
+            // },
+            include:[
+                {
+                 model: User,
+            required: false,
+            attributes:['user_name']
+                }
+            ]
+            
+        }]
+         });
+    
+    
+    const post = postWithComments.get({plain: true});
+    console.log(post);
+    console.log(post.comments);
+    
+    res.render('viewpost', {post})
+    
+    });
 
-res.render('viewpost', {post})
 
-});
 
 router.post('/newPost', async (req, res) => {
 
