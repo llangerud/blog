@@ -75,22 +75,22 @@ router.post('/newPost', async (req, res) => {
             });
 
     //updates the selected post
-    router.put('/edit/update/:id', (req, res) => {
+    router.put('/edit/update/:id', async (req, res) => {
 
-        Post.update({title: req.body.title, content: req.body.content},{
+        await Post.update({title: req.body.title, content: req.body.content},{
             where: { id: req.params.id },
             
              });
-        
+             res.status(200).json({message: 'updated'}); 
         });
         //deletes the selected post
-        router.delete('/edit/delete/:id', (req, res) => {
+        router.delete('/edit/delete/:id', async (req, res) => {
 
-             Post.destroy({
+           await Post.destroy({
                 where: { id: req.params.id },
                 
                  });
-                        
+             res.render('dashboard');           
             });
 
 
