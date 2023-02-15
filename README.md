@@ -1,4 +1,4 @@
-# E-commerce back end
+
   ![badge](https://img.shields.io/badge/license-MIT-blue.svg)
   ## Description
   This is a blog application that allows user to create an account, log in, create posts and comments, view those posts and comments and edit or delete them. 
